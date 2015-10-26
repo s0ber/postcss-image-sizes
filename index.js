@@ -1,13 +1,9 @@
-var postcss = require('postcss');
+const postcss = require('postcss')
 
-module.exports = postcss.plugin('postcss-image-sizes', function (opts) {
-    opts = opts || {};
+module.exports = postcss.plugin('postcss-image-sizes', (opts = {}) => {
+  // Work with options here
 
-    // Work with options here
-
-    return function (css, result) {
-
-        // Transform CSS AST here
-
-    };
-});
+  return (css, result) => {
+    // Transform CSS AST here
+  }
+})
