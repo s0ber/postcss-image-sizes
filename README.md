@@ -1,5 +1,4 @@
 # PostCSS Image Sizes [![Build Status][ci-img]][ci]
-[![Build Status](https://travis-ci.org/s0ber/postcss-image-sizes.png?branch=master)](https://travis-ci.org/s0ber/postcss-image-sizes)
 
 [PostCSS] plugin Image dimensions in your css.
 
