@@ -1,0 +1,5 @@
+.test_el {
+  display: block;
+  position: absolute;
+  width: image-width('img/wrong_image.jpg');
+}

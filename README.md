@@ -8,13 +8,19 @@
 
 ```css
 .foo {
-    /* Input example */
+  /* Input example */
+  img.my_image {
+    background-size: image-width('my_image.png') image-height('my_image.png')
+  }
 }
 ```
 
 ```css
 .foo {
   /* Output example */
+  img.my_image {
+    background-size: 100px 200px
+  }
 }
 ```
 
