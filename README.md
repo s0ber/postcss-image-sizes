@@ -25,4 +25,3 @@ postcss([ require('postcss-image-sizes') ])
 ```
 
 See [PostCSS] docs for examples for your environment.
-# postcss-image-sizes
