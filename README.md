@@ -7,20 +7,16 @@
 [ci]:      https://travis-ci.org/s0ber/postcss-image-sizes
 
 ```css
-.foo {
+img.my_image {
   /* Input example */
-  img.my_image {
-    background-size: image-width('my_image.png') image-height('my_image.png')
-  }
+  background-size: image-width('my_image.png') image-height('my_image.png');
 }
 ```
 
 ```css
-.foo {
+img.my_image {
   /* Output example */
-  img.my_image {
-    background-size: 100px 200px
-  }
+  background-size: 100px 200px;
 }
 ```
 
