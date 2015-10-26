@@ -1,0 +1,31 @@
+{
+  "name": "postcss-image-sizes",
+  "version": "0.0.0",
+  "description": "PostCSS plugin Image dimensions in your css",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "images",
+    "dimensions"
+  ],
+  "author": "Sergey <sergeyshishkalov@gmail.com>",
+  "license": "MIT",
+  "repository": "s0ber/postcss-image-sizes",
+  "bugs": {
+    "url": "https://github.com/s0ber/postcss-image-sizes/issues"
+  },
+  "homepage": "https://github.com/s0ber/postcss-image-sizes",
+  "dependencies": {
+    "postcss": "^5.0.2"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-mocha": "^2.1.3"
+  },
+  "scripts": {
+    "test": "gulp"
+  }
+}
