@@ -23,7 +23,12 @@ img.my_image {
 ## Usage
 
 ```js
-postcss([ require('postcss-image-sizes') ])
+const imageSizes = require('postcss-image-sizes')
+postcss([imageSizes({assetsPath: '/path/to/images'})])
 ```
 
 See [PostCSS] docs for examples for your environment.
+
+## Configuration options
+
+You should provide absolute path, against which images paths will be resolved, in `assetsPath` option.
