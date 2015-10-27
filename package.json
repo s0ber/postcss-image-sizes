@@ -1,7 +1,8 @@
 {
   "name": "postcss-image-sizes",
   "version": "0.0.0",
-  "description": "PostCSS plugin Image dimensions in your css",
+  "description": "PostCSS plugin to automatically get image dimensions",
+  "main": "lib/index.js",
   "keywords": [
     "postcss",
     "css",
@@ -29,7 +30,8 @@
     "eslint-config-toptal": "",
     "eslint-plugin-react": "^3.6.3",
     "babel-eslint": "^4.1.3",
-    "image-size": "^0.3.5"
+    "image-size": "^0.3.5",
+    "gulp-util": "^3.0.7"
   },
   "scripts": {
     "test": "gulp"

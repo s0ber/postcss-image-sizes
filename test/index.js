@@ -3,7 +3,7 @@ import path from 'path'
 import postcss from 'postcss'
 import {expect} from 'chai'
 
-import plugin from '../'
+import plugin from '../src'
 
 const read = function(path) {
   return fs.readFileSync(path, 'utf-8')

@@ -1,5 +1,9 @@
 import gulp from 'gulp'
-const files = ['index.js', 'test/*.js', 'gulpfile.babel.js']
+import babel from 'gulp-babel'
+import gutil from 'gulp-util'
+import rimraf from 'rimraf'
+
+const files = ['src/*.js', 'test/*.js', 'gulpfile.babel.js']
 
 gulp.task('lint', () => {
   const eslint = require('gulp-eslint')
@@ -19,4 +23,14 @@ gulp.task('default', ['lint', 'test'])
 
 gulp.task('watch', () => {
   gulp.watch(files, ['lint', 'test'])
+})
+
+gulp.task('build', ['default'], (done) => {
+  rimraf('lib/', () => {
+    gulp.src('src/*.js')
+      .pipe(babel()).on('error', gutil.log)
+      .pipe(gulp.dest('lib/'))
+
+    done()
+  })
 })
