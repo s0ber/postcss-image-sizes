@@ -6,6 +6,6 @@
   background-size: image-width('img/test_image.jpg') image-height('img/test_image.jpg');
   padding-top: image-width(img/test_image.jpg);
   padding-bottom: image-height(img/test_image.jpg);
-  margin-top: hidpi-image-width(img/test_image.jpg);
-  margin-bottom: hidpi-image-height(img/test_image.jpg);
+  margin-top: hidpi-image-width(~img/test_image.jpg);
+  margin-bottom: hidpi-image-height(~img/test_image.jpg);
 }

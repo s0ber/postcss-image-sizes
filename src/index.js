@@ -17,7 +17,7 @@ function getImageSizeByPath(assetsPath, imagePath) {
 
 function applyImageHelper(css, getImageSize, helperString, helperPattern) {
   css.replaceValues(helperPattern, {fast: helperString}, (string) => {
-    const imagePath = string.match(helperPattern)[1]
+    const imagePath = string.match(helperPattern)[1].replace(/^~/, '')
     const isRetinaImage = helperPattern == HIDPI_IMAGE_WIDTH_PATTERN || helperPattern == HIDPI_IMAGE_HEIGHT_PATTERN
     const isWidthHelper = helperPattern == IMAGE_WIDTH_PATTERN || helperPattern == HIDPI_IMAGE_WIDTH_PATTERN
 
@@ -29,8 +29,8 @@ function applyImageHelper(css, getImageSize, helperString, helperPattern) {
       } else {
         return imageSize[isWidthHelper ? 'width' : 'height'] + 'px'
       }
-    } catch (err) {
-      throw css.error(err.message, {word: imagePath})
+    } catch (e) {
+      throw css.error(e.message, {plugin: 'postcss-image-sizes'})
     }
   })
 }
