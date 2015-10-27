@@ -15,7 +15,7 @@ function getImageSizeByPath(assetsPath, imagePath) {
   return cachedSizes[imagePath]
 }
 
-function applyHelper(css, getImageSize, helperString, helperPattern) {
+function applyImageHelper(css, getImageSize, helperString, helperPattern) {
   css.replaceValues(helperPattern, {fast: helperString}, (string) => {
     const imagePath = string.match(helperPattern)[1]
     const isRetinaImage = helperPattern == HIDPI_IMAGE_WIDTH_PATTERN || helperPattern == HIDPI_IMAGE_HEIGHT_PATTERN
@@ -40,11 +40,11 @@ export default postcss.plugin('postcss-image-sizes', (opts = {}) => {
   const getImageSize = getImageSizeByPath.bind(this, assetsPath)
 
   return (css, result) => {
-    const applyHelperToCss = applyHelper.bind(this, css, getImageSize)
+    const applyImageHelperToCss = applyImageHelper.bind(this, css, getImageSize)
 
-    applyHelperToCss('hidpi-image-width', HIDPI_IMAGE_WIDTH_PATTERN)
-    applyHelperToCss('hidpi-image-height', HIDPI_IMAGE_HEIGHT_PATTERN)
-    applyHelperToCss('image-width', IMAGE_WIDTH_PATTERN)
-    applyHelperToCss('image-height', IMAGE_HEIGHT_PATTERN)
+    applyImageHelperToCss('hidpi-image-width', HIDPI_IMAGE_WIDTH_PATTERN)
+    applyImageHelperToCss('hidpi-image-height', HIDPI_IMAGE_HEIGHT_PATTERN)
+    applyImageHelperToCss('image-width', IMAGE_WIDTH_PATTERN)
+    applyImageHelperToCss('image-height', IMAGE_HEIGHT_PATTERN)
   }
 })
