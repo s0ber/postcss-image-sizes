@@ -34,4 +34,23 @@ describe('postcss-image-sizes', () => {
       })
     })
   })
+
+  context('resolves file with miltipe assets pathes', () => {
+    it('sets correct image sized', () => {
+      const input = read('test/fixtures/example.css')
+      const output = read('test/fixtures/example.out.css')
+      opts.assetsPath = [
+        path.join(__dirname),
+        path.join(__dirname, 'fixtures')
+      ]
+
+      postcss([plugin(opts)]).process(input).then((result) => {
+        expect(result.css).to.eql(output)
+        expect(result.warnings()).to.be.empty
+        done()
+      }).catch((error) => {
+        done(error)
+      })
+    })
+  })
 })

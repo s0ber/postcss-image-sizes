@@ -1,6 +1,7 @@
 import postcss from 'postcss'
 import sizeOf from 'image-size'
 import path from 'path'
+import fs from 'fs'
 
 const HIDPI_IMAGE_WIDTH_PATTERN = /hidpi-image-width\(['"]?(.+?)['"]?\)/
 const HIDPI_IMAGE_HEIGHT_PATTERN = /hidpi-image-height\(['"]?(.+?)['"]?\)/
@@ -9,8 +10,25 @@ const IMAGE_HEIGHT_PATTERN = /image-height\(['"]?(.+?)['"]?\)/
 
 const cachedSizes = {}
 
+function imageExists(imagePath) {
+  try {
+    fs.statSync(imagePath).toString()
+    return true
+  } catch (err) {
+    return false
+  }
+}
+
 function getImageSizeByPath(assetsPath, imagePath) {
-  imagePath = path.resolve(assetsPath, imagePath)
+  if (Array.isArray(assetsPath)) {
+    const tmpPath = assetsPath.find((p) => {
+      return imageExists(path.resolve(p, imagePath))
+    })
+    imagePath = path.resolve(tmpPath, imagePath)
+  } else {
+    imagePath = path.resolve(assetsPath, imagePath)
+  }
+
   cachedSizes[imagePath] = cachedSizes[imagePath] || sizeOf(imagePath)
   return cachedSizes[imagePath]
 }
