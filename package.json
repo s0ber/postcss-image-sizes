@@ -1,6 +1,6 @@
 {
   "name": "postcss-image-sizes",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "PostCSS plugin to automatically get image dimensions",
   "main": "lib/index.js",
   "keywords": [
