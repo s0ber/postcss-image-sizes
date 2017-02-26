@@ -19,28 +19,34 @@ function imageExists(imagePath) {
   }
 }
 
-function getImageSizeByPath(assetsPath, imagePath) {
-  if (Array.isArray(assetsPath)) {
-    const tmpPath = assetsPath.find((p) => {
-      return imageExists(path.resolve(p, imagePath))
-    })
-    imagePath = path.resolve(tmpPath, imagePath)
+function getImageSizeByPath(assetsPath, sourcePath, imagePath) {
+  let resolvedImagePath
+  if (imagePath[0] == '/' || imagePath[0] == '~') {
+    imagePath = imagePath.substr(1)
+    if (Array.isArray(assetsPath)) {
+      const tmpPath = assetsPath.find((p) => {
+        return imageExists(path.resolve(p, imagePath))
+      })
+      resolvedImagePath = path.resolve(tmpPath, imagePath)
+    } else {
+      resolvedImagePath = path.resolve(assetsPath, imagePath)
+    }
   } else {
-    imagePath = path.resolve(assetsPath, imagePath)
+    resolvedImagePath = path.resolve(path.dirname(sourcePath), imagePath)
   }
 
-  cachedSizes[imagePath] = cachedSizes[imagePath] || sizeOf(imagePath)
-  return cachedSizes[imagePath]
+  cachedSizes[resolvedImagePath] = cachedSizes[resolvedImagePath] || sizeOf(resolvedImagePath)
+  return cachedSizes[resolvedImagePath]
 }
 
 function applyImageHelper(css, getImageSize, helperString, helperPattern) {
   css.replaceValues(helperPattern, {fast: helperString}, (string) => {
-    const imagePath = string.match(helperPattern)[1].replace(/^~/, '')
+    const imagePath = string.match(helperPattern)[1]
     const isRetinaImage = helperPattern == HIDPI_IMAGE_WIDTH_PATTERN || helperPattern == HIDPI_IMAGE_HEIGHT_PATTERN
     const isWidthHelper = helperPattern == IMAGE_WIDTH_PATTERN || helperPattern == HIDPI_IMAGE_WIDTH_PATTERN
 
     try {
-      const imageSize = getImageSize(imagePath)
+      const imageSize = getImageSize(css.source.input.file, imagePath)
 
       if (isRetinaImage) {
         return (imageSize[isWidthHelper ? 'width' : 'height'] / 2) + 'px'

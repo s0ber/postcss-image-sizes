@@ -1,0 +1,13 @@
+.test_el {
+  display: block;
+  position: absolute;
+  width: image-width('/img/test_image.jpg');
+  height: image-height('/img/test_image.jpg');
+  background-size: image-width('/img/test_image.jpg') image-height('/img/test_image.jpg');
+  padding-top: image-width(/img/test_image.jpg);
+  padding-bottom: image-height(/img/test_image.jpg);
+  margin-top: hidpi-image-width(~img/test_image.jpg);
+  margin-bottom: hidpi-image-height(~img/test_image.jpg);
+  border-width: image-width(../img/test_image.jpg);
+  border-height: image-height(../img/test_image.jpg);
+}
