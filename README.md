@@ -10,12 +10,12 @@ It includes helpers for both retina and non-retina images.
 ```css
 img.my_image {
   /* Input example */
-  background-size: image-width('my_image.png') image-height('my_image.png');
+  background-size: image-width('~my_image.png') image-height('~my_image.png');
 }
 
 img.my_hidpi_image {
   /* Input example */
-  background-size: hidpi-image-width('my_image.png') hidpi-image-height('my_image.png');
+  background-size: hidpi-image-width('~my_image.png') hidpi-image-height('~my_image.png');
 }
 ```
 
@@ -39,6 +39,12 @@ postcss([imageSizes({assetsPath: '/path/to/images'})])
 ```
 
 See [PostCSS] docs for examples for your environment.
+
+## Absolute and relative paths
+
+We recommend to use absolute paths for images, since CSS has very limited support for relative paths. Path is treated as absolute, when it is prefixed with `~` or `/` sign. You need to specify `assetsPath` option to use those absolute paths (see below).
+
+All other paths will be treated as relative (to current file).
 
 ## Configuration options
 
