@@ -18,7 +18,6 @@
     "react"
   ],
   "rules": {
-    "react/jsx-uses-react": 1,
-    "keyword-spacing": 1
+    "react/jsx-uses-react": 1
   }
 }
